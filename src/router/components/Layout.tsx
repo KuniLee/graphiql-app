@@ -7,6 +7,7 @@ const Layout: FC = () => {
       <main>
         <Outlet />
       </main>
+      <footer>Футер</footer>
     </>
   )
 }
