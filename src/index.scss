@@ -1,3 +1,10 @@
+@import 'normalize.css';
 @import 'primereact/resources/themes/lara-light-indigo/theme.css';
 @import 'primereact/resources/primereact.min.css';
 @import 'primeicons/primeicons.css';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

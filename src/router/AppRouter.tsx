@@ -4,7 +4,7 @@ import AuthPage from '@/pages/AuthPage'
 import WelcomePage from '@/pages/WelcomePage'
 import MainPage from '@/pages/MainPage'
 import NotFound from '@/pages/NotFound'
-import Layout from '@/router/components/Layout'
+import Layout from '@/pages/Layout'
 
 export enum ERoutes {
   Welcome = '/',
