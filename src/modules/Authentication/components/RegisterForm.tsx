@@ -3,7 +3,7 @@ import { ERoutes } from '@/router'
 import { Navigate } from 'react-router-dom'
 import Auth, { useAuth } from '@/modules/Authentication'
 
-const AuthPage = () => {
+const RegisterForm = () => {
   const { isAuth } = useAuth()
 
   if (isAuth) return <Navigate to={ERoutes.Welcome} />
@@ -11,4 +11,4 @@ const AuthPage = () => {
   return <Auth></Auth>
 }
 
-export default AuthPage
+export default RegisterForm

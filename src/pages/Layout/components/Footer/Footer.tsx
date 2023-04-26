@@ -6,7 +6,11 @@ import classes from './Footer.module.scss'
 const Footer: FC = () => {
   const { t } = useTranslation(['footer'])
 
-  return <footer className={classes.footer}>{t('Title')}</footer>
+  return (
+    <footer className={classes.footer}>
+      <div className="container">{t('Title')}</div>
+    </footer>
+  )
 }
 
 export default Footer
