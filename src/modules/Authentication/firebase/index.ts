@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-
-console.log(import.meta.env)
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
@@ -13,8 +12,10 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_API_ID || '',
 }
 
-console.log(firebaseConfig)
-
 const app = initializeApp(firebaseConfig)
 
 export const auth = getAuth(app)
+
+export const signIn = (email: string, password: string) => {
+  return signInWithEmailAndPassword(auth, email, password)
+}

@@ -8,7 +8,12 @@ const AuthPage = () => {
 
   if (isAuth) return <Navigate to={ERoutes.Welcome} />
 
-  return <Auth></Auth>
+  return (
+    <>
+      <span>{String(isAuth)}</span>
+      <Auth></Auth>
+    </>
+  )
 }
 
 export default AuthPage
