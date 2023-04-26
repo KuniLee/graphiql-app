@@ -4,15 +4,19 @@ import welcome_RU from './ru/welcome.json'
 import welcome_EN from './en/welcome.json'
 import footer_RU from './ru/footer.json'
 import footer_EN from './en/footer.json'
+import header_RU from './ru/header.json'
+import header_EN from './en/header.json'
 
 const resources = {
   en: {
     welcome: welcome_EN,
     footer: footer_EN,
+    header: header_EN,
   },
   ru: {
     welcome: welcome_RU,
     footer: footer_RU,
+    header: header_RU,
   },
 } as const
 
@@ -22,7 +26,7 @@ i18next.use(initReactI18next).init({
   resources,
   lng: 'en',
   fallbackLng: 'en',
-  ns: ['welcome', 'footer'],
+  ns: ['welcome', 'footer', 'header'],
   debug: import.meta.env.DEV,
   defaultNS,
   interpolation: {

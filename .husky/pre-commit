@@ -14,3 +14,4 @@ if [ "$branch" = "develop" ]; then
 fi
 
 npm run lint
+tsc

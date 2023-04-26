@@ -1,17 +1,33 @@
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SelectButton, SelectButtonChangeEvent } from 'primereact/selectbutton'
+import { Button } from 'primereact/button'
+import { ERoutes } from '@/router'
+import { useAuthState } from '@/modules/Authentication'
+import { useSignOut } from '@/modules/Authentication'
+import { useNavigate } from 'react-router-dom'
 
 const Header: FC = () => {
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation(['header'])
+  const navigate = useNavigate()
+  const [signOut] = useSignOut()
+
+  const [user] = useAuthState()
 
   const changeLang = ({ value }: SelectButtonChangeEvent) => {
     i18n.changeLanguage(value)
   }
 
+  const bntClick = async () => {
+    if (user) {
+      await signOut()
+      navigate(ERoutes.Welcome)
+    } else navigate(ERoutes.Auth)
+  }
+
   return (
     <header className="border-bottom-1 py-2">
-      <div className="container flex justify-content-end align-items-center">
+      <div className="container flex gap-2 justify-content-end align-items-center">
         <SelectButton
           options={[
             { label: 'EN', value: 'en' },
@@ -20,6 +36,7 @@ const Header: FC = () => {
           value={i18n.language}
           onChange={changeLang}
         />
+        <Button label={t(user ? 'LogOut' : 'SignIn/Up').toString()} onClick={bntClick} />
       </div>
     </header>
   )

@@ -1,19 +1,14 @@
 import React from 'react'
 import { ERoutes } from '@/router'
 import { Navigate } from 'react-router-dom'
-import Auth, { useAuth } from '@/modules/Authentication'
+import Auth, { useAuthState } from '@/modules/Authentication'
 
 const AuthPage = () => {
-  const { isAuth } = useAuth()
+  const [user] = useAuthState()
 
-  if (isAuth) return <Navigate to={ERoutes.Welcome} />
+  if (user) return <Navigate to={ERoutes.Welcome} />
 
-  return (
-    <>
-      <span>{String(isAuth)}</span>
-      <Auth></Auth>
-    </>
-  )
+  return <Auth></Auth>
 }
 
 export default AuthPage
