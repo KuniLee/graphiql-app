@@ -33,5 +33,5 @@ jobs:
           npm install eslint
           npm run lint
 
-        #- name: Tests
-        # run: npm run post
+      - name: Types checking
+        run: tsc

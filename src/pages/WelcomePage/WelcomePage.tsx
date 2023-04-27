@@ -11,7 +11,8 @@ const WelcomePage: FC = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="pt-5 flex justify-content-center">
+    <div className="pt-5 text-center">
+      <h1>{t('Welcome')}</h1>
       {user ? (
         <Button
           label={t('ToMain').toString()}
