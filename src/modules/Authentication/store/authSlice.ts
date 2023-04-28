@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+
+// !!!This code is needed
+//
 // import { User } from 'firebase/auth'
 // import { signIn } from '@/modules/Authentication/firebase'
 
@@ -15,6 +18,8 @@ const initialState: AuthState = {
   test: null,
 }
 
+// !!!This code is needed
+//
 // export const login = createAsyncThunk<UserData, { email: string; password: string }, { rejectValue: string }>(
 //   'auth/login',
 //   async ({ email, password }, { rejectWithValue }) => {
@@ -33,6 +38,9 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
+
+  // !!!This code is needed
+  //
   // extraReducers: (builder) => {
   //   builder
   //     .addCase(login.fulfilled, (state, action) => {
