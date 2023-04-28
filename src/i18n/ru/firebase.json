@@ -1,0 +1,4 @@
+{
+    "auth/wrong-password": "Неверный пароль",
+    "auth/user-not-found": "Пользователь не найден"
+}
