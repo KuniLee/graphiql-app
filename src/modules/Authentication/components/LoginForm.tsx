@@ -55,11 +55,11 @@ const LoginForm = () => {
         className="w-full mb-3"
       />
 
-      <div className="flex align-items-center justify-content-between mb-6">
+      <div className="flex align-items-center justify-content-between mb-4">
         <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
       </div>
-      {error && <Message severity="error" text={error.message} className="w-full my-1" />}
       <Button label="Sign In" icon="pi pi-user" className="w-full" />
+      {error && <Message severity="error" text={error.message} className="w-full my-1" />}
     </form>
   )
 }

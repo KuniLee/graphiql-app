@@ -3,23 +3,37 @@ main {
 }
 
 .container {
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
 
-@media (width >= 992px) {
+@media screen and (width < 768px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+@media screen and (width >= 768px) {
+  .container {
+    width: 720px;
+  }
+}
+
+@media screen and (width >= 992px) {
   .container {
     width: 960px;
   }
 }
 
-@media (width >= 1200px) {
+@media screen and (width >= 1200px) {
   .container {
     width: 1140px;
   }
 }
 
-@media (width >= 1400px) {
+@media screen and (width >= 1400px) {
   .container {
     width: 1320px;
   }
