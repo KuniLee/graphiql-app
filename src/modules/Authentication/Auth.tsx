@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import LoginForm from '@/modules/Authentication/components/LoginForm'
+import React, { FC } from 'react';
+import LoginForm from '@/modules/Authentication/components/LoginForm';
 
 const Auth: FC = () => {
   return (
@@ -13,7 +13,7 @@ const Auth: FC = () => {
         <LoginForm />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Auth
+export default Auth;

@@ -1,35 +1,35 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
-import { InputText } from 'primereact/inputtext'
-import { Button } from 'primereact/button'
-import { Message } from 'primereact/message'
-import { useSignIn } from '@/modules/Authentication'
-import { ERoutes } from '@/router'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import { Message } from 'primereact/message';
+import { useSignIn } from '@/modules/Authentication';
+import { ERoutes } from '@/router';
+import { useNavigate } from 'react-router-dom';
 
 type LoginData = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 const LoginForm = () => {
-  const navigate = useNavigate()
-  const { t } = useTranslation(['firebase'])
+  const navigate = useNavigate();
+  const { t } = useTranslation(['firebase']);
 
-  const [signIn, , , error] = useSignIn()
+  const [signIn, , , error] = useSignIn();
 
   const {
     register,
     handleSubmit,
     // formState: { errors },
-  } = useForm<LoginData>()
+  } = useForm<LoginData>();
 
   const onSubmit = handleSubmit(async (data) => {
-    const result = await signIn(data.email, data.password)
+    const result = await signIn(data.email, data.password);
 
-    if (result?.user) navigate('../' + ERoutes.Main)
-  })
+    if (result?.user) navigate('../' + ERoutes.Main);
+  });
 
   return (
     <form onSubmit={onSubmit}>
@@ -63,7 +63,7 @@ const LoginForm = () => {
       <Button label="Sign In" icon="pi pi-user" className="w-full" />
       {error && <Message severity="error" text={t(error.code, { ns: 'firebase' })} className="w-full my-1" />}
     </form>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

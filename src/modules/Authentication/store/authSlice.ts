@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 // !!!This code is needed
 //
@@ -11,12 +11,12 @@ import { createSlice } from '@reduxjs/toolkit'
 // }
 
 interface AuthState {
-  test: null
+  test: null;
 }
 
 const initialState: AuthState = {
   test: null,
-}
+};
 
 // !!!This code is needed
 //
@@ -52,6 +52,6 @@ export const authSlice = createSlice({
   //       state.error = action.payload || 'Error'
   //     })
   // },
-})
+});
 
-export default authSlice.reducer
+export default authSlice.reducer;

@@ -1,13 +1,13 @@
-import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'
-import welcome_RU from './ru/welcome.json'
-import welcome_EN from './en/welcome.json'
-import footer_RU from './ru/footer.json'
-import footer_EN from './en/footer.json'
-import header_RU from './ru/header.json'
-import header_EN from './en/header.json'
-import firebase_RU from './ru/firebase.json'
-import firebase_EN from './en/firebase.json'
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import welcome_RU from './ru/welcome.json';
+import welcome_EN from './en/welcome.json';
+import footer_RU from './ru/footer.json';
+import footer_EN from './en/footer.json';
+import header_RU from './ru/header.json';
+import header_EN from './en/header.json';
+import firebase_RU from './ru/firebase.json';
+import firebase_EN from './en/firebase.json';
 
 const resources = {
   en: {
@@ -22,9 +22,9 @@ const resources = {
     header: header_RU,
     firebase: firebase_RU,
   },
-} as const
+} as const;
 
-export const defaultNS = 'welcome'
+export const defaultNS = 'welcome';
 
 i18next.use(initReactI18next).init({
   resources,
@@ -36,6 +36,6 @@ i18next.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
-})
+});
 
-export default i18next
+export default i18next;

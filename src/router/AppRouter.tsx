@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import AuthPage from '@/pages/AuthPage'
-import WelcomePage from '@/pages/WelcomePage'
-import MainPage from '@/pages/MainPage'
-import NotFound from '@/pages/NotFound'
-import Layout from '@/pages/Layout'
+import React, { FC } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AuthPage from '@/pages/AuthPage';
+import WelcomePage from '@/pages/WelcomePage';
+import MainPage from '@/pages/MainPage';
+import NotFound from '@/pages/NotFound';
+import Layout from '@/pages/Layout';
 
 export enum ERoutes {
   Welcome = '/',
@@ -24,7 +24,7 @@ const AppRouter: FC = () => {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default AppRouter
+export default AppRouter;

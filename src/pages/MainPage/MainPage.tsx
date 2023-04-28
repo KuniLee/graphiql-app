@@ -1,14 +1,14 @@
-import React, { FC } from 'react'
-import { useAuthState } from '@/modules/Authentication'
-import { Navigate } from 'react-router-dom'
-import { ERoutes } from '@/router'
+import React, { FC } from 'react';
+import { useAuthState } from '@/modules/Authentication';
+import { Navigate } from 'react-router-dom';
+import { ERoutes } from '@/router';
 
 const MainPage: FC = () => {
-  const [user] = useAuthState()
+  const [user] = useAuthState();
 
-  if (!user) return <Navigate to={'../' + ERoutes.Auth} />
+  if (!user) return <Navigate to={'../' + ERoutes.Auth} />;
 
-  return <div>Main</div>
-}
+  return <div>Main</div>;
+};
 
-export default MainPage
+export default MainPage;

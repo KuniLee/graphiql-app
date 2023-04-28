@@ -1,9 +1,9 @@
-import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { useAuthState as useAuthStateFirebase } from 'react-firebase-hooks/auth'
-import { useSignOut as useSignOutFirebase } from 'react-firebase-hooks/auth'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuthState as useAuthStateFirebase } from 'react-firebase-hooks/auth';
+import { useSignOut as useSignOutFirebase } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
@@ -13,24 +13,24 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || '',
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
   appId: import.meta.env.VITE_FIREBASE_API_ID || '',
-}
+};
 
-const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app)
+export const auth = getAuth(app);
 
 export const signIn = (email: string, password: string) => {
-  return signInWithEmailAndPassword(auth, email, password)
-}
+  return signInWithEmailAndPassword(auth, email, password);
+};
 
 export const useAuthState = () => {
-  return useAuthStateFirebase(auth)
-}
+  return useAuthStateFirebase(auth);
+};
 
 export const useSignOut = () => {
-  return useSignOutFirebase(auth)
-}
+  return useSignOutFirebase(auth);
+};
 
 export const useSignIn = () => {
-  return useSignInWithEmailAndPassword(auth)
-}
+  return useSignInWithEmailAndPassword(auth);
+};
