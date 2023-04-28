@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import { Message } from 'primereact/message'
@@ -14,8 +15,9 @@ type LoginData = {
 
 const LoginForm = () => {
   const navigate = useNavigate()
+  const { t } = useTranslation(['firebase'])
 
-  const [signIn, user, loading, error] = useSignIn()
+  const [signIn, , , error] = useSignIn()
 
   const {
     register,
@@ -59,7 +61,7 @@ const LoginForm = () => {
         <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
       </div>
       <Button label="Sign In" icon="pi pi-user" className="w-full" />
-      {error && <Message severity="error" text={error.message} className="w-full my-1" />}
+      {error && <Message severity="error" text={t(error.code, { ns: 'firebase' })} className="w-full my-1" />}
     </form>
   )
 }
