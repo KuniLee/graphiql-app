@@ -18,7 +18,7 @@ const Header: FC = () => {
     i18n.changeLanguage(value)
   }
 
-  const bntClick = async () => {
+  const buttonClickHandle = async () => {
     if (user) {
       await signOut()
       navigate(ERoutes.Welcome)
@@ -36,7 +36,7 @@ const Header: FC = () => {
           value={i18n.language}
           onChange={changeLang}
         />
-        <Button label={t(user ? 'LogOut' : 'SignIn/Up').toString()} onClick={bntClick} />
+        <Button label={t(user ? 'LogOut' : 'SignIn/Up').toString()} onClick={buttonClickHandle} />
       </div>
     </header>
   )
