@@ -1,4 +1,5 @@
 {
   "auth/wrong-password": "Wrong password",
-  "auth/user-not-found": "User not found"
+  "auth/user-not-found": "User not found",
+  "auth/invalid-email": "Invalid email"
 }

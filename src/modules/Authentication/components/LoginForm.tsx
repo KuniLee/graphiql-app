@@ -15,7 +15,7 @@ type LoginData = {
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation(['firebase']);
+  const { t } = useTranslation(['auth', 'firebase']);
 
   const [signIn, , , error] = useSignIn();
 
@@ -34,33 +34,29 @@ const LoginForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <label htmlFor="email" className="block text-900 font-medium mb-2">
-        Email
+        {t('loginForm.email.label')}
       </label>
       <InputText
         defaultValue="test@mail.ru"
         {...register('email')}
         id="email"
         type="text"
-        placeholder="Email address"
+        placeholder={t('loginForm.email.placeholder').toString()}
         className="w-full mb-3"
       />
 
       <label htmlFor="password" className="block text-900 font-medium mb-2">
-        Password
+        {t('loginForm.password.label')}
       </label>
       <InputText
         defaultValue="123456"
         {...register('password')}
         id="password"
         type="password"
-        placeholder="Password"
+        placeholder={t('loginForm.password.placeholder').toString()}
         className="w-full mb-3"
       />
-
-      <div className="flex align-items-center justify-content-between mb-4">
-        <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
-      </div>
-      <Button label="Sign In" icon="pi pi-user" className="w-full" />
+      <Button label={t('loginForm.submitBtn').toString()} icon="pi pi-user" className="w-full" />
       {error && <Message severity="error" text={t(error.code, { ns: 'firebase' })} className="w-full my-1" />}
     </form>
   );
