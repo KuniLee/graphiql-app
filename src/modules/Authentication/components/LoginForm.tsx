@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
-import { useSignIn } from '@/modules/Authentication';
+import { useSignIn } from '../firebase';
 import { ERoutes } from '@/router';
 import { useNavigate } from 'react-router-dom';
 

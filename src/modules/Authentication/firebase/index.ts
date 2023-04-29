@@ -1,9 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useAuthState as useAuthStateFirebase } from 'react-firebase-hooks/auth';
 import { useSignOut as useSignOutFirebase } from 'react-firebase-hooks/auth';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
@@ -19,10 +18,6 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export const signIn = (email: string, password: string) => {
-  return signInWithEmailAndPassword(auth, email, password);
-};
-
 export const useAuthState = () => {
   return useAuthStateFirebase(auth);
 };
@@ -33,4 +28,8 @@ export const useSignOut = () => {
 
 export const useSignIn = () => {
   return useSignInWithEmailAndPassword(auth);
+};
+
+export const useCreateUser = () => {
+  return useCreateUserWithEmailAndPassword(auth);
 };
