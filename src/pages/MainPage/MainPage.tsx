@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useAuthState } from '@/modules/Authentication';
 import { Navigate } from 'react-router-dom';
 import { ERoutes } from '@/router';

@@ -1,5 +1,6 @@
 {
-  "SignIn": "Sign In",
-  "ToMain": "To main",
-  "Welcome": "Welcome"
+  "welcomePage.signIn": "Sign In",
+  "welcomePage.start": "Start",
+  "welcomePage.welcome": "Welcome to",
+  "welcomePage.continue": "<0>Sign in</0> to continue"
 }
