@@ -1,5 +1,10 @@
 {
+  "ErrorTitle": {
+    "login": "Ошибка входа",
+    "registration": "Ошибка регистрации"
+  },
   "auth/wrong-password": "Неверный пароль",
   "auth/user-not-found": "Пользователь не найден",
-  "auth/invalid-email": "Неверный email"
+  "auth/invalid-email": "Неверный email",
+  "auth/email-already-in-use": "Данный e-mail уже используется"
 }

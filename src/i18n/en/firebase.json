@@ -1,5 +1,10 @@
 {
+  "ErrorTitle": {
+    "login": "Login failed",
+    "registration": "Registration failed"
+  },
   "auth/wrong-password": "Wrong password",
   "auth/user-not-found": "User not found",
-  "auth/invalid-email": "Invalid email"
+  "auth/invalid-email": "Invalid email",
+  "auth/email-already-in-use": "This email is already in use"
 }
