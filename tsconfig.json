@@ -24,12 +24,7 @@
       "@assets/*": ["./assets/*"]
     }
   },
-  "include": [
-    "./src/**/*",
-    "styled.d.ts",
-    "vite.config.ts",
-    "node_modules/vitest/globals.d.ts"
-  ],
+  "include": ["./src/**/*", "styled.d.ts", "vite.config.ts", "node_modules/vitest/globals.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "ts-node": {
     "esm": true,
