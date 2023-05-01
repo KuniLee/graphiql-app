@@ -81,6 +81,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
               {t('loginForm.password.label')}
             </label>
             <Password
+              defaultValue="123456"
               feedback={false}
               toggleMask
               id={field.name}

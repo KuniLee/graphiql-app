@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useEffect } from 'react';
+import { FC, RefObject, useEffect, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { InputText } from 'primereact/inputtext';
@@ -10,6 +10,7 @@ import cx from 'classnames';
 import { Password } from 'primereact/password';
 import { Divider } from 'primereact/divider';
 import { ERoutes } from '@/router';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type RegisterData = {
   email: string;
@@ -28,6 +29,8 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterData>({ mode: 'onBlur' });
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const footer = (
     <>
@@ -56,11 +59,17 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
 
   const onSubmit = handleSubmit(
     async (data) => {
-      const result = await createUser(data.email, data.password);
+      try {
+        const token = await recaptchaRef?.current?.executeAsync();
 
-      console.log(result);
+        if (token) {
+          const result = await createUser(data.email, data.password);
 
-      if (result?.user) navigate('../' + ERoutes.Main);
+          if (result?.user) navigate('../' + ERoutes.Main);
+        } else throw new Error('No reCAPTCHA token');
+      } catch (error) {
+        console.error(error);
+      }
     },
     (errors) => {
       errToast.current?.replace(
@@ -115,6 +124,7 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
           </>
         )}
       />
+      <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={import.meta.env.VITE_RECAPTCHA_SITEKEY} />
       <Button label={t('regForm.submitBtn').toString()} icon="pi pi-user-plus" className="w-full" />
     </form>
   );
