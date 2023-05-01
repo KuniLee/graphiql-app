@@ -1,5 +1,5 @@
 import React, { FC, RefObject, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -8,6 +8,7 @@ import { ERoutes } from '@/router';
 import { useNavigate } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import cx from 'classnames';
+import { Password } from 'primereact/password';
 
 type LoginData = {
   email: string;
@@ -22,6 +23,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginData>({ mode: 'onBlur' });
@@ -69,17 +71,27 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
         placeholder={t('loginForm.email.placeholder').toString()}
         className={cx('w-full mb-3', { 'p-invalid': errors.email })}
       />
-
-      <label htmlFor="password" className="block text-900 font-medium mb-2">
-        {t('loginForm.password.label')}
-      </label>
-      <InputText
-        defaultValue="123456"
-        {...register('password', { required: true })}
-        id="password"
-        type="password"
-        placeholder={t('loginForm.password.placeholder').toString()}
-        className={cx('w-full mb-3', { 'p-invalid': errors.password })}
+      <Controller
+        name="password"
+        control={control}
+        rules={{ required: true }}
+        render={({ field, fieldState }) => (
+          <>
+            <label htmlFor="password" className="block text-900 font-medium mb-2">
+              {t('loginForm.password.label')}
+            </label>
+            <Password
+              feedback={false}
+              toggleMask
+              id={field.name}
+              {...field}
+              inputRef={field.ref}
+              inputClassName="w-full"
+              placeholder={t('loginForm.password.placeholder').toString()}
+              className={cx('w-full mb-3', { 'p-invalid': fieldState.error })}
+            />
+          </>
+        )}
       />
       <Button label={t('loginForm.submitBtn').toString()} icon="pi pi-user" className="w-full" />
     </form>
