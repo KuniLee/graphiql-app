@@ -10,7 +10,7 @@ const WelcomePage: FC = () => {
   const [user] = useAuthState();
 
   return (
-    <div className="main h-full flex flex-column justify-content-center align-items-center text-center">
+    <div className="main absolute h-full w-full flex flex-column justify-content-center align-items-center text-center">
       <h2 className="font-light">{t('welcomePage.welcome')}</h2>
       <h1 className="text-5xl mt-2">GraphiQl-app</h1>
       <img className="logo mb-3" src={logo} alt="graphql" />
