@@ -1,0 +1,25 @@
+.logo {
+  height: 10em;
+  animation: rotation 5s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.arrow {
+  margin-left: 0.5em;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  .pi {
+    margin-left: 0.75em;
+  }
+}

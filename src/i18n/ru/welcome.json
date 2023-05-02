@@ -1,5 +1,6 @@
 {
-  "SignIn": "Войти",
-  "ToMain": "На главную",
-  "Welcome": "Доброй пожаловать"
+  "welcomePage.signIn": "Войти",
+  "welcomePage.start": "Начать",
+  "welcomePage.welcome": "Добро пожаловать в",
+  "welcomePage.continue": "<0>Войдите</0>, чтобы продолжить!"
 }

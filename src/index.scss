@@ -9,4 +9,9 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  font-family: var(--font-family);
+}
+
+a:visited {
+  color: inherit;
 }
