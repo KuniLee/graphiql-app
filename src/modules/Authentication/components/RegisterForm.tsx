@@ -11,6 +11,7 @@ import { Password } from 'primereact/password';
 import { Divider } from 'primereact/divider';
 import { ERoutes } from '@/router';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { EMAIL_PATTERN } from '../constants/patterns';
 
 type RegisterData = {
   email: string;
@@ -91,7 +92,7 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
       <InputText
         {...register('email', {
           required: true,
-          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          pattern: EMAIL_PATTERN,
         })}
         id="email"
         type="text"

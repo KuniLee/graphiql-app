@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { Toast } from 'primereact/toast';
 import cx from 'classnames';
 import { Password } from 'primereact/password';
+import { EMAIL_PATTERN } from '../constants/patterns';
 
 type LoginData = {
   email: string;
@@ -65,7 +66,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
         defaultValue="test@mail.ru"
         {...register('email', {
           required: true,
-          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          pattern: EMAIL_PATTERN,
         })}
         id="email"
         type="text"
