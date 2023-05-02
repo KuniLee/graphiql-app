@@ -63,6 +63,7 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
         const token = await recaptchaRef?.current?.executeAsync();
 
         if (token) {
+          recaptchaRef?.current?.reset();
           const result = await createUser(data.email, data.password);
 
           if (result?.user) navigate('../' + ERoutes.Main);
