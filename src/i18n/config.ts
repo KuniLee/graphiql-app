@@ -8,6 +8,8 @@ import header_RU from './ru/header.json';
 import header_EN from './en/header.json';
 import firebase_RU from './ru/firebase.json';
 import firebase_EN from './en/firebase.json';
+import auth_RU from './ru/auth.json';
+import auth_EN from './en/auth.json';
 
 const resources = {
   en: {
@@ -15,12 +17,14 @@ const resources = {
     footer: footer_EN,
     header: header_EN,
     firebase: firebase_EN,
+    auth: auth_EN,
   },
   ru: {
     welcome: welcome_RU,
     footer: footer_RU,
     header: header_RU,
     firebase: firebase_RU,
+    auth: auth_RU,
   },
 } as const;
 
@@ -30,7 +34,7 @@ i18next.use(initReactI18next).init({
   resources,
   lng: 'en',
   fallbackLng: 'en',
-  ns: ['welcome', 'footer', 'header', 'firebase'],
+  ns: ['welcome', 'footer', 'header', 'firebase', 'auth'],
   debug: import.meta.env.DEV,
   defaultNS,
   interpolation: {
