@@ -13,12 +13,12 @@
   }
 }
 
-.pi {
+.arrow {
   margin-left: 0.5em;
   transition: all 0.2s ease;
 }
 
-a:hover {
+.link:hover {
   .pi {
     margin-left: 0.75em;
   }
