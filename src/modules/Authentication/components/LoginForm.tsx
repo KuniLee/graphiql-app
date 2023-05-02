@@ -26,7 +26,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>({ mode: 'onBlur' });
+  } = useForm<LoginData>({ mode: 'onBlur', defaultValues: { password: '123456' } });
 
   useEffect(() => {
     if (error)
@@ -45,6 +45,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
       if (result?.user) navigate('../' + ERoutes.Main);
     },
     (errors) => {
+      console.log(errors);
       errToast.current?.replace(
         Object.entries(errors).map(([field, { type }]) => ({
           severity: 'error',
