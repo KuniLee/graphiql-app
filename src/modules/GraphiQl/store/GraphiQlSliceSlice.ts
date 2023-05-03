@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '@/store';
 
 interface GraphiQlState {
   serverUrl: string;
@@ -14,22 +15,19 @@ const initialState: GraphiQlState = {
 
 // !!!This code is needed
 //
-// export const login = createAsyncThunk<UserData, { email: string; password: string }, { rejectValue: string }>(
-//   'auth/login',
-//   async ({ email, password }, { rejectWithValue }) => {
-//     try {
-//       const result = await signIn(email, password)
-//       const user = result.user as unknown as UserData
-//
-//       return { email: user.email, uid: user.uid, accessToken: user.accessToken }
-//     } catch (error) {
-//       return rejectWithValue(error instanceof Error ? error.message : 'Error')
-//     }
-//   }
-// )
+export const apolloQuery = createAsyncThunk<void, never, { rejectValue: string }>(
+  'graphiQl/query',
+  async (_, { getState }) => {
+    const {
+      graphiQl: { request },
+    } = getState() as RootState;
+
+    console.log(request);
+  }
+);
 
 export const GraphiQlSlice = createSlice({
-  name: 'main',
+  name: 'graphiQl',
   initialState,
   reducers: {
     setUrl(state, { payload }: PayloadAction<string>) {
