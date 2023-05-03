@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import type { PreloadedState } from '@reduxjs/toolkit';
-import { mainReducer } from '@/modules/GraphiQl';
+import { docsReducer } from '@/modules/Documentation';
+import { GraphiQlReducer } from '@/modules/GraphiQl';
 
 const rootReducer = combineReducers({
-  auth: mainReducer,
+  docs: docsReducer,
+  graphiQl: GraphiQlReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {

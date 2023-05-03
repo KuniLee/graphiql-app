@@ -1,11 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface MainState {
-  sideBarIsOpened: boolean;
+interface GraphiQlState {
+  serverUrl: string;
+  request: string;
+  response: string;
 }
 
-const initialState: MainState = {
-  sideBarIsOpened: false,
+const initialState: GraphiQlState = {
+  serverUrl: 'https://graphqlzero.almansi.me/api',
+  request: '',
+  response: '',
 };
 
 // !!!This code is needed
@@ -24,19 +28,19 @@ const initialState: MainState = {
 //   }
 // )
 
-export const mainSlice = createSlice({
+export const GraphiQlSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
-    openDocs(state) {
-      state.sideBarIsOpened = true;
+    setUrl(state, { payload }: PayloadAction<string>) {
+      state.serverUrl = payload;
     },
-    closeDocs(state) {
-      state.sideBarIsOpened = false;
+    setRequest(state, { payload }: PayloadAction<string>) {
+      state.request = payload;
     },
   },
 });
 
-export const { openDocs, closeDocs } = mainSlice.actions;
+export const { setUrl, setRequest } = GraphiQlSlice.actions;
 
-export default mainSlice.reducer;
+export default GraphiQlSlice.reducer;
