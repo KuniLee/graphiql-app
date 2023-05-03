@@ -7,6 +7,9 @@ import { useAuthState } from '@/modules/Authentication';
 import { useSignOut } from '@/modules/Authentication';
 import { useNavigate } from 'react-router-dom';
 
+import Logo from './Logo/Logo';
+import styles from './Header.module.scss';
+
 const Header: FC = () => {
   const { t, i18n } = useTranslation(['header']);
   const navigate = useNavigate();
@@ -26,7 +29,8 @@ const Header: FC = () => {
   };
 
   return (
-    <header className="border-bottom-1 py-2">
+    <header className={styles.header}>
+      <Logo />
       <div className="container flex gap-2 justify-content-end align-items-center">
         <SelectButton
           options={[

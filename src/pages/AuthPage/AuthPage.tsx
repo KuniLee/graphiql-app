@@ -1,4 +1,3 @@
-import React from 'react';
 import { ERoutes } from '@/router';
 import { Navigate } from 'react-router-dom';
 import Auth, { useAuthState } from '@/modules/Authentication';
