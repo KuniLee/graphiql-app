@@ -8,6 +8,7 @@ import { Button } from 'primereact/button';
 import { openDocs } from '@/modules/Documentation';
 import { useAppDispatch } from '@/hooks/redux';
 import cx from 'classnames';
+import RequestBtn from '@/modules/GraphiQl/components/RequestBtn';
 
 const GraphQl: FC = () => {
   const dispatch = useAppDispatch();
@@ -16,8 +17,8 @@ const GraphQl: FC = () => {
     <div className={classes.wrapper}>
       <div className="flex p-2 gap-2">
         <Button icon="pi pi-folder-open" onClick={() => dispatch(openDocs())} />
-        <URLInput></URLInput>
-        <Button icon={<i className="pi pi-caret-right" />} />
+        <URLInput />
+        <RequestBtn />
       </div>
       <Splitter style={{ height: '500px' }}>
         <SplitterPanel className={cx(classes.panel, 'flex align-items-center justify-content-center')}>
