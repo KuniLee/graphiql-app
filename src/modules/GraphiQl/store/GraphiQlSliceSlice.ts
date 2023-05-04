@@ -33,7 +33,6 @@ export const GraphiQlSlice = createSlice({
   reducers: {
     setUrl(state, { payload }: PayloadAction<string>) {
       state.serverUrl = payload;
-      introspectionQuery(payload);
     },
     setRequest(state, { payload }: PayloadAction<string>) {
       state.request = payload;

@@ -8,10 +8,10 @@ import { useDebouncedCallback } from 'use-debounce';
 
 const URLInput: FC = () => {
   const dispatch = useAppDispatch();
-  const { serverUrl } = useAppSelector((state) => state.graphiQl);
+  const { serverUrl, isLoading } = useAppSelector((state) => state.graphiQl);
 
   const debounced = useDebouncedCallback(() => {
-    dispatch(introspectionQuery(serverUrl));
+    if (!isLoading) dispatch(introspectionQuery());
   }, 3000);
 
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +21,7 @@ const URLInput: FC = () => {
 
   return (
     <div className="p-inputgroup">
-      <Button icon="pi pi-sync" />
+      <Button icon="pi pi-sync" disabled={isLoading} onClick={() => dispatch(introspectionQuery())} />
       <InputText value={serverUrl} onChange={inputHandler} />
     </div>
   );

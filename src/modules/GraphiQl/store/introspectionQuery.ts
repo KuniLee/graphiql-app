@@ -3,14 +3,19 @@ import { getIntrospectionQuery } from 'graphql';
 import type { IntrospectionQuery } from 'graphql';
 import ky from 'ky';
 import isValidUrl from '@/helpers/isUrlValid';
+import { RootState } from '@/store';
 
-export default createAsyncThunk<IntrospectionQuery, string, { rejectValue: string }>(
+export default createAsyncThunk<IntrospectionQuery, undefined, { rejectValue: string }>(
   'graphiQl/introQuery',
-  async (uli, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
+    const {
+      graphiQl: { serverUrl },
+    } = getState() as RootState;
+
     try {
-      if (!isValidUrl(uli)) throw Error('InvalidUrl');
+      if (!isValidUrl(serverUrl)) throw Error('InvalidUrl');
       const schemaJSON = await ky
-        .post(uli, { json: { query: getIntrospectionQuery() } })
+        .post(serverUrl, { json: { query: getIntrospectionQuery() } })
         .json<{ data: IntrospectionQuery }>();
 
       return schemaJSON.data;
