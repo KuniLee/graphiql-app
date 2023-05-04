@@ -4,7 +4,6 @@ import { EditorView, keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
-import './Editor.scss';
 
 type EditorProps = {
   schema?: GraphQLSchema;
@@ -50,7 +49,9 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
 
   return (
     <CodeMirror
+      className="overflow-auto w-full h-full border-round"
       value={defaultValue}
+      height="500px"
       extensions={extensions}
       theme={customTheme}
       basicSetup={{ autocompletion: true }}
