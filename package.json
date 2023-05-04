@@ -13,12 +13,11 @@
   "dependencies": {
     "@apollo/client": "~3.7.13",
     "@codemirror/commands": "~6.2.3",
-    "@codemirror/state": "~6.2.0",
     "@codemirror/view": "~6.10.1",
     "@reduxjs/toolkit": "~1.9.5",
+    "@uiw/react-codemirror": "~4.19.16",
     "classnames": "~2.3.2",
     "cm6-graphql": "~0.0.4",
-    "codemirror": "~6.0.1",
     "firebase": "~9.20.0",
     "graphql": "~16.6.0",
     "i18next": "~22.4.15",
