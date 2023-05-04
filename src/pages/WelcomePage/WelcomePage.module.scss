@@ -3,6 +3,21 @@
   animation: rotation 5s linear infinite;
 }
 
+.wrap {
+  margin-top: 25vh;
+  margin-bottom: 5vh;
+
+  @media only screen and (height <= 800px) {
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+  }
+
+  @media only screen and (height <= 700px) {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+  }
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0);
