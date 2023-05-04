@@ -1,17 +1,28 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { Button } from 'primereact/button';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { InputText } from 'primereact/inputtext';
+import introspectionQuery from '@/modules/GraphiQl/store/introspectionQuery';
 import { setUrl } from '@/modules/GraphiQl';
+import { useDebouncedCallback } from 'use-debounce';
 
 const URLInput: FC = () => {
   const dispatch = useAppDispatch();
   const { serverUrl } = useAppSelector((state) => state.graphiQl);
 
+  const debounced = useDebouncedCallback(() => {
+    dispatch(introspectionQuery(serverUrl));
+  }, 3000);
+
+  const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setUrl(event.target.value));
+    debounced();
+  };
+
   return (
     <div className="p-inputgroup">
       <Button icon="pi pi-sync" />
-      <InputText value={serverUrl} onChange={(event) => dispatch(setUrl(event.target.value))} />
+      <InputText value={serverUrl} onChange={inputHandler} />
     </div>
   );
 };

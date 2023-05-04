@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button } from 'primereact/button';
 import useApolloClient from '@/modules/GraphiQl/hooks/useApolloClient';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { apolloQuery } from '@/modules/GraphiQl/store/GraphiQlSliceSlice';
+import apolloQuery from '@/modules/GraphiQl/store/apolloQuery';
 
 const RequestBtn: FC = () => {
   const { serverUrl } = useAppSelector((state) => state.graphiQl);
