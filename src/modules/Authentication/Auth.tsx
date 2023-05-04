@@ -11,7 +11,7 @@ const Auth: FC = () => {
 
   return (
     <div className="flex my-4 align-items-center justify-content-center">
-      <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+      <div className="surface-card md:p-4 py-1 shadow-2 border-round w-full lg:w-6">
         <TabView>
           <TabPanel header={t('tabMenu.login')}>
             <LoginForm errToast={toast} />

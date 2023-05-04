@@ -5,7 +5,7 @@ import Auth, { useAuthState } from '@/modules/Authentication';
 const AuthPage = () => {
   const [user] = useAuthState();
 
-  return user ? <Navigate to={ERoutes.Main} /> : <Auth />;
+  return user ? <Navigate to={'../' + ERoutes.Main} /> : <Auth />;
 };
 
 export default AuthPage;
