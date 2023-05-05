@@ -33,6 +33,9 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
     '.ͼc': {
       color: '#009FB8',
     },
+    '.ͼd': {
+      color: '#009FB8',
+    },
     '.cm-line': {
       color: '#007DEB',
     },
@@ -42,6 +45,9 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
     '.cm-scroller': {
       lineHeight: '1.7',
       fontSize: '1.15em',
+    },
+    '.cm-tooltip': {
+      color: '#000',
     },
   });
 
