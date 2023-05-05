@@ -57,7 +57,7 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
       height="100%"
       extensions={extensions}
       theme={customTheme}
-      basicSetup={{ autocompletion: true }}
+      basicSetup={{ autocompletion: true, bracketMatching: true, completionKeymap: true }}
       onChange={handleChange}
     />
   );
