@@ -20,7 +20,7 @@
 
   &__year {
     font-weight: 600;
-    color: #b1aecb9f;
+    color: var(--gray-600);
   }
 
   &__content {
@@ -29,10 +29,11 @@
     align-items: center;
     font-size: 16px;
     font-weight: 700;
-    color: #7e6dd1;
+    color: var(--purple-400);
 
     a {
       cursor: pointer;
+      color: inherit;
       text-align: center;
       text-decoration: none;
       transition: all 0.2s;
