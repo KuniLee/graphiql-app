@@ -20,9 +20,15 @@ export default createAsyncThunk<IntrospectionQuery, undefined, { rejectValue: st
 
       return schemaJSON.data;
     } catch (error) {
-      console.log(error);
-
-      return rejectWithValue(JSON.stringify(error, null, ' '));
+      return rejectWithValue(
+        JSON.stringify(
+          {
+            error: 'Failed to fetch schema. Please check your connection',
+          },
+          null,
+          ' '
+        )
+      );
     }
   }
 );

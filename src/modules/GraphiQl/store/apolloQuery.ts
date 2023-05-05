@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import { gql, ApolloError } from '@apollo/client';
+import type { NormalizedCacheObject, ApolloClient } from '@apollo/client';
 import { RootState } from '@/store';
 
 export default createAsyncThunk<string, ApolloClient<NormalizedCacheObject>, { rejectValue: string }>(
@@ -15,7 +16,19 @@ export default createAsyncThunk<string, ApolloClient<NormalizedCacheObject>, { r
 
       return JSON.stringify(result, null, ' ');
     } catch (error) {
-      return rejectWithValue(JSON.stringify(error, null, ' '));
+      if (error instanceof ApolloError)
+        if (error.networkError && 'result' in error.networkError)
+          return JSON.stringify(error.networkError.result, null, ' ');
+
+      return rejectWithValue(
+        JSON.stringify(
+          {
+            error: 'Failed to fetch. Please check your connection',
+          },
+          null,
+          ' '
+        )
+      );
     }
   }
 );

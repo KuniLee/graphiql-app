@@ -13,6 +13,7 @@ const RequestBtn: FC = () => {
 
   return (
     <Button
+      disabled={isLoading}
       icon={<i className={cx('pi', { 'pi-caret-right': !isLoading, 'pi-ellipsis-h pulsate-bck': isLoading })} />}
       onClick={() => {
         dispatch(apolloQuery(client));

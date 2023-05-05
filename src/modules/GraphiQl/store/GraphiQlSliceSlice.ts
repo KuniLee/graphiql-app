@@ -6,14 +6,14 @@ import introspectionQuery from '@/modules/GraphiQl/store/introspectionQuery';
 interface GraphiQlState {
   serverUrl: string;
   request: string;
-  introError: string;
+  introError: boolean;
   response: string;
   isLoading: boolean;
   introQuery: IntrospectionQuery | null;
 }
 
 const initialState: GraphiQlState = {
-  introError: '',
+  introError: false,
   introQuery: null,
   serverUrl: 'https://graphqlzero.almansi.me/api',
   isLoading: false,
@@ -52,15 +52,16 @@ export const GraphiQlSlice = createSlice({
         state.response = action.payload || '';
       })
       .addCase(introspectionQuery.fulfilled, (state, action) => {
-        state.introError = '';
+        state.introError = false;
         state.isLoading = false;
         state.introQuery = action.payload as Draft<typeof action.payload>;
       })
       .addCase(introspectionQuery.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(introspectionQuery.rejected, (state, action) => {
-        state.introError = action.payload || '';
+      .addCase(introspectionQuery.rejected, (state, { payload }) => {
+        state.response = payload || '';
+        state.introError = true;
         state.isLoading = false;
         state.introQuery = null;
       });

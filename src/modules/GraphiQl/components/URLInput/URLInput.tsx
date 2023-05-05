@@ -5,10 +5,11 @@ import { InputText } from 'primereact/inputtext';
 import introspectionQuery from '@/modules/GraphiQl/store/introspectionQuery';
 import { setUrl } from '@/modules/GraphiQl';
 import { useDebouncedCallback } from 'use-debounce';
+import cx from 'classnames';
 
 const URLInput: FC = () => {
   const dispatch = useAppDispatch();
-  const { serverUrl, isLoading } = useAppSelector((state) => state.graphiQl);
+  const { serverUrl, isLoading, introError } = useAppSelector((state) => state.graphiQl);
 
   const debounced = useDebouncedCallback(() => {
     if (!isLoading) dispatch(introspectionQuery());
@@ -20,13 +21,13 @@ const URLInput: FC = () => {
   };
 
   useEffect(() => {
-    console.log(234);
-  }, []);
+    dispatch(introspectionQuery());
+  }, [dispatch]);
 
   return (
     <div className="p-inputgroup">
       <Button icon="pi pi-sync" disabled={isLoading} onClick={() => dispatch(introspectionQuery())} />
-      <InputText value={serverUrl} onChange={inputHandler} />
+      <InputText className={cx({ 'p-invalid': introError })} value={serverUrl} onChange={inputHandler} />
     </div>
   );
 };
