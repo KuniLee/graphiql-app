@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { EditorView, keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { graphql } from 'cm6-graphql';
-import { GraphQLSchema } from 'graphql';
+import type { GraphQLSchema } from 'graphql';
 
 type EditorProps = {
   schema?: GraphQLSchema;
@@ -45,13 +45,16 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
     },
   });
 
-  const extensions = [keymap.of([...defaultKeymap, indentWithTab]), customTheme, graphql(schema)];
+  const extensions = useMemo(
+    () => [keymap.of([...defaultKeymap, indentWithTab]), customTheme, graphql(schema)],
+    [customTheme, schema]
+  );
 
   return (
     <CodeMirror
-      className="overflow-auto w-full h-full border-round"
+      className="w-full p-2 h-full border-round"
       value={defaultValue}
-      height="500px"
+      height="100%"
       extensions={extensions}
       theme={customTheme}
       basicSetup={{ autocompletion: true }}
