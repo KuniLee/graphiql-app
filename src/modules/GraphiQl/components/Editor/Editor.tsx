@@ -1,8 +1,8 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo, useRef } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { EditorView, keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
-import { graphql } from 'cm6-graphql';
+import { graphql, updateSchema } from 'cm6-graphql';
 import type { GraphQLSchema } from 'graphql';
 
 type EditorProps = {
@@ -45,10 +45,16 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
     },
   });
 
+  const viewRef = useRef<EditorView>();
+
   const extensions = useMemo(
     () => [keymap.of([...defaultKeymap, indentWithTab]), customTheme, graphql(schema)],
     [customTheme, schema]
   );
+
+  useEffect(() => {
+    if (viewRef.current) updateSchema(viewRef.current, schema);
+  }, [schema]);
 
   return (
     <CodeMirror
@@ -57,6 +63,9 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
       height="100%"
       extensions={extensions}
       theme={customTheme}
+      onCreateEditor={(view) => {
+        viewRef.current = view;
+      }}
       basicSetup={{ autocompletion: true, bracketMatching: true, completionKeymap: true }}
       onChange={handleChange}
     />
