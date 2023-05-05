@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useRef } from 'react';
-import CodeMirror, { useCodeMirror } from '@uiw/react-codemirror';
+import { useCodeMirror } from '@uiw/react-codemirror';
 import { EditorView, keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { graphql, updateSchema } from 'cm6-graphql';
@@ -61,6 +61,7 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
     extensions,
     value: defaultValue,
     theme: customTheme,
+    onChange: handleChange,
   });
 
   useEffect(() => {
