@@ -1,6 +1,5 @@
 .logo {
   height: 10em;
-  animation: rotation 5s linear infinite;
 }
 
 .wrap {
@@ -15,16 +14,6 @@
   @media only screen and (height <= 700px) {
     margin-top: 10vh;
     margin-bottom: 5vh;
-  }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
   }
 }
 

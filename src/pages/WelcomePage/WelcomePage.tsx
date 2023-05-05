@@ -14,7 +14,7 @@ const WelcomePage: FC = () => {
     <div className={cx(classes.wrap, 'flex flex-column justify-content-center align-items-center text-center')}>
       <h2 className="font-light">{t('welcomePage.welcome')}</h2>
       <h1 className="text-3xl md:text-5xl mt-2">GraphiQl-app</h1>
-      <img className={classes.logo + ' mb-3'} src={logo} alt="graphql" />
+      <img className={classes.logo + ' rotation mb-3'} src={logo} alt="graphql" />
       {user ? (
         <a className="text-lg" href={'../' + ERoutes.Main}>
           {t('welcomePage.start')}

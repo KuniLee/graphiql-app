@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { InputText } from 'primereact/inputtext';
@@ -18,6 +18,10 @@ const URLInput: FC = () => {
     dispatch(setUrl(event.target.value));
     debounced();
   };
+
+  useEffect(() => {
+    console.log(234);
+  }, []);
 
   return (
     <div className="p-inputgroup">

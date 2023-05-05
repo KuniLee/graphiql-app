@@ -1,8 +1,9 @@
-@import 'normalize.css';
+@import '../../node_modules/normalize.css/normalize.css';
 @import 'primereact/resources/themes/viva-dark/theme.css';
 @import 'primereact/resources/primereact.min.css';
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex';
+@import 'animations';
 
 #root {
   display: flex;
