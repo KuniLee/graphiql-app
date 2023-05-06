@@ -4,19 +4,15 @@ import { Splitter, SplitterPanel } from 'primereact/splitter';
 import RequestField from '@/modules/GraphiQl/components/RequestField';
 import ResponseField from '@/modules/GraphiQl/components/ResponseField';
 import classes from './GraphQl.module.scss';
-import { Button } from 'primereact/button';
-import { openDocs } from '@/modules/Documentation';
-import { useAppDispatch } from '@/hooks/redux';
 import cx from 'classnames';
 import RequestBtn from '@/modules/GraphiQl/components/RequestBtn';
+import DocsBtn from '@/modules/GraphiQl/components/DocsBtn';
 
 const GraphQl: FC = () => {
-  const dispatch = useAppDispatch();
-
   return (
     <div className={classes.wrapper}>
       <div className="flex p-2 gap-2">
-        <Button icon="pi pi-folder-open" onClick={() => dispatch(openDocs())} />
+        <DocsBtn />
         <URLInput />
         <RequestBtn />
       </div>

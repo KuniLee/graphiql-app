@@ -1,16 +1,20 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '@/store';
-import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import { gql } from '@apollo/client';
+import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit';
+import apolloQuery from './apolloQuery';
+import type { IntrospectionQuery } from 'graphql';
+import introspectionQuery from '@/modules/GraphiQl/store/introspectionQuery';
 
 interface GraphiQlState {
   serverUrl: string;
   request: string;
+  introError: boolean;
   response: string;
   isLoading: boolean;
+  introQuery: IntrospectionQuery | null;
 }
 
 const initialState: GraphiQlState = {
+  introError: false,
+  introQuery: null,
   serverUrl: 'https://graphqlzero.almansi.me/api',
   isLoading: false,
   request: `query{
@@ -22,24 +26,6 @@ const initialState: GraphiQlState = {
 }`,
   response: '',
 };
-
-export const apolloQuery = createAsyncThunk<string, ApolloClient<NormalizedCacheObject>, { rejectValue: string }>(
-  'graphiQl/query',
-  async (client, { getState, rejectWithValue }) => {
-    const {
-      graphiQl: { request },
-    } = getState() as RootState;
-    const query = gql(request);
-
-    try {
-      const result = await client.query({ query });
-
-      return JSON.stringify(result, null, ' ');
-    } catch (error) {
-      return rejectWithValue(JSON.stringify(error, null, ' '));
-    }
-  }
-);
 
 export const GraphiQlSlice = createSlice({
   name: 'graphiQl',
@@ -64,6 +50,20 @@ export const GraphiQlSlice = createSlice({
       .addCase(apolloQuery.rejected, (state, action) => {
         state.isLoading = false;
         state.response = action.payload || '';
+      })
+      .addCase(introspectionQuery.fulfilled, (state, action) => {
+        state.introError = false;
+        state.isLoading = false;
+        state.introQuery = action.payload as Draft<typeof action.payload>;
+      })
+      .addCase(introspectionQuery.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(introspectionQuery.rejected, (state, { payload }) => {
+        state.response = payload || '';
+        state.introError = true;
+        state.isLoading = false;
+        state.introQuery = null;
       });
   },
 });
