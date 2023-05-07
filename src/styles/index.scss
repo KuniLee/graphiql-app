@@ -16,3 +16,9 @@
 a:visited {
   color: inherit;
 }
+
+@media screen and (width >= 768px) {
+  .p-button {
+    padding: 0.5rem 1rem;
+  }
+}

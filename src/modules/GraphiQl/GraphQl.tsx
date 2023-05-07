@@ -10,7 +10,7 @@ import DocsBtn from '@/modules/GraphiQl/components/DocsBtn';
 
 const GraphQl: FC = () => {
   return (
-    <div className={classes.wrapper}>
+    <div className={cx(classes.wrapper, 'container my-2')}>
       <div className="flex p-2 gap-2">
         <DocsBtn />
         <URLInput />

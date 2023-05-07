@@ -4,7 +4,6 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useAuthState } from '@/modules/Authentication';
 import classes from './WelcomePage.module.scss';
 import logo from '@/assets/graphql_logo.png';
-import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
 const WelcomePage: FC = () => {
@@ -12,7 +11,7 @@ const WelcomePage: FC = () => {
   const [user] = useAuthState();
 
   return (
-    <div className={cx(classes.wrap, 'flex flex-column justify-content-center align-items-center text-center')}>
+    <div className="flex w-full m-2 flex-column justify-content-center align-items-center text-center">
       <h2 className="font-light">{t('welcomePage.welcome')}</h2>
       <h1 className="text-3xl md:text-5xl mt-2">GraphiQl-app</h1>
       <img className={classes.logo + ' rotation mb-3'} src={logo} alt="graphql" />
