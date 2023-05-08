@@ -22,6 +22,7 @@ const Editor: FC<EditorProps> = ({ schema, defaultValue, handleChange }) => {
     extensions,
     value: defaultValue,
     theme: customTheme,
+
     height: '100%',
     onChange: handleChange,
   });

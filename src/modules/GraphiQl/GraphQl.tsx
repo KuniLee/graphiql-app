@@ -10,8 +10,11 @@ import DocsBtn from '@/modules/GraphiQl/components/DocsBtn';
 import HidingPanel from '@components/HidingPanel';
 import VariablesField from '@/modules/GraphiQl/components/VariablesField';
 import HeadersField from '@/modules/GraphiQl/components/HeadersField';
+import { useMediaQuery } from 'react-responsive';
 
 const GraphQl: FC = () => {
+  const isVertical = useMediaQuery({ query: '(min-width: 768px)' });
+
   return (
     <div className={cx(classes.wrapper, 'container my-2')}>
       <div className="flex p-2 gap-2">
@@ -19,8 +22,8 @@ const GraphQl: FC = () => {
         <URLInput />
         <RequestBtn />
       </div>
-      <Splitter className="flex-grow-1">
-        <SplitterPanel className={cx(classes.panel, 'flex flex-column')}>
+      <Splitter className={classes.splitter} layout={isVertical ? 'horizontal' : 'vertical'}>
+        <SplitterPanel className={classes.panel}>
           <RequestField />
           <HidingPanel tabs={['Headers', 'Variables']}>
             <VariablesField />

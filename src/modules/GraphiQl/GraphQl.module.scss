@@ -6,5 +6,23 @@
 }
 
 .panel {
+  display: flex;
+  flex-direction: column;
   min-width: 10rem;
+
+  @media screen and (width < 765px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.splitter {
+  flex-grow: 1;
+
+  @media screen and (width < 765px) {
+    border: 0;
+
+    [class='p-splitter-gutter'] {
+      display: none;
+    }
+  }
 }

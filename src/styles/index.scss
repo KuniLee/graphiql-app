@@ -13,12 +13,12 @@
   font-family: var(--font-family);
 }
 
-a:visited {
-  color: inherit;
+html {
+  @media screen and (width < 768px) {
+    font-size: 14px;
+  }
 }
 
-@media screen and (width >= 768px) {
-  .p-button {
-    padding: 0.5rem 1rem;
-  }
+a:visited {
+  color: inherit;
 }
