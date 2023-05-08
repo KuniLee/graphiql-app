@@ -14,7 +14,7 @@ const ResponseField: FC = () => {
       height="100%"
       theme={customTheme}
       editable={false}
-      basicSetup={{ lineNumbers: false }}
+      basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
     />
   );
 };
