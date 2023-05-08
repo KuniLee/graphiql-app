@@ -7,6 +7,9 @@ import classes from './GraphQl.module.scss';
 import cx from 'classnames';
 import RequestBtn from '@/modules/GraphiQl/components/RequestBtn';
 import DocsBtn from '@/modules/GraphiQl/components/DocsBtn';
+import HidingPanel from '@components/HidingPanel';
+import VariablesField from '@/modules/GraphiQl/components/VariablesField';
+import HeadersField from '@/modules/GraphiQl/components/HeadersField';
 
 const GraphQl: FC = () => {
   return (
@@ -16,9 +19,13 @@ const GraphQl: FC = () => {
         <URLInput />
         <RequestBtn />
       </div>
-      <Splitter style={{ height: '500px' }}>
-        <SplitterPanel className={cx(classes.panel, 'flex align-items-center justify-content-center')}>
+      <Splitter className="flex-grow-1">
+        <SplitterPanel className={cx(classes.panel, 'flex flex-column')}>
           <RequestField />
+          <HidingPanel tabs={['Headers', 'Variables']}>
+            <VariablesField />
+            <HeadersField />
+          </HidingPanel>
         </SplitterPanel>
         <SplitterPanel className={cx(classes.panel, 'flex align-items-center justify-content-center')}>
           <ResponseField />

@@ -1,4 +1,6 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
   background-color: var(--highlight-bg);
   border-radius: 6px;
 }
