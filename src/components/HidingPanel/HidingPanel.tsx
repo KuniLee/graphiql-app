@@ -41,7 +41,7 @@ const HidingPanel: FC<HidingPanelProps> = ({ children, tabs }) => {
   };
 
   return (
-    <Panel headerTemplate={template} toggleable>
+    <Panel headerTemplate={template} collapsed className={classes.panel} toggleable>
       {panels[activeIndex]}
     </Panel>
   );

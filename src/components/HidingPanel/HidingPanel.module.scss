@@ -4,7 +4,13 @@
 }
 
 .tabMenu {
-  a[role='presentation'] {
+  [class='p-menuitem-link'] {
     padding: 5px !important;
+  }
+}
+
+.panel {
+  [class='p-panel-content'] {
+    border: 0;
   }
 }
