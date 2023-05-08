@@ -4,7 +4,7 @@ import { keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { graphql, updateSchema } from 'cm6-graphql';
 import type { GraphQLSchema } from 'graphql';
-import customTheme from './codeMirrorTheme';
+import customTheme from '@/styles/codeMirrorTheme';
 
 type EditorProps = {
   schema?: GraphQLSchema;
