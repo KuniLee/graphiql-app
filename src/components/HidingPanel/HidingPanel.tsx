@@ -21,7 +21,7 @@ const HidingPanel: FC<HidingPanelProps> = ({ children, tabs }) => {
 
   const template = (options: PanelHeaderTemplateOptions) => {
     const items = tabs.map((tab) => ({ label: tab }));
-    const toggleIcon = options.collapsed ? 'pi pi-chevron-down' : 'pi pi-chevron-up';
+    const toggleIcon = options.collapsed ? 'pi pi-chevron-up' : 'pi pi-chevron-down';
     const className = cx(classes.header, options.className);
 
     return (
