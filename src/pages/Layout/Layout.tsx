@@ -14,7 +14,7 @@ const Layout: FC = () => {
   ) : (
     <>
       <Header />
-      <main className="container">
+      <main>
         <Outlet />
       </main>
       <Footer />

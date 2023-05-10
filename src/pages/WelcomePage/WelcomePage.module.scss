@@ -2,21 +2,6 @@
   height: 10em;
 }
 
-.wrap {
-  margin-top: 25vh;
-  margin-bottom: 5vh;
-
-  @media only screen and (height <= 800px) {
-    margin-top: 15vh;
-    margin-bottom: 5vh;
-  }
-
-  @media only screen and (height <= 700px) {
-    margin-top: 10vh;
-    margin-bottom: 5vh;
-  }
-}
-
 .arrow {
   margin-left: 0.5em;
   transition: all 0.2s ease;
