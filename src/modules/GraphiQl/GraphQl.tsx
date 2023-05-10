@@ -7,18 +7,28 @@ import classes from './GraphQl.module.scss';
 import cx from 'classnames';
 import RequestBtn from '@/modules/GraphiQl/components/RequestBtn';
 import DocsBtn from '@/modules/GraphiQl/components/DocsBtn';
+import HidingPanel from '@components/HidingPanel';
+import VariablesField from '@/modules/GraphiQl/components/VariablesField';
+import HeadersField from '@/modules/GraphiQl/components/HeadersField';
+import { useMediaQuery } from 'react-responsive';
 
 const GraphQl: FC = () => {
+  const isVertical = useMediaQuery({ query: '(min-width: 768px)' });
+
   return (
-    <div className={classes.wrapper}>
+    <div className={cx(classes.wrapper, 'container my-2')}>
       <div className="flex p-2 gap-2">
         <DocsBtn />
         <URLInput />
         <RequestBtn />
       </div>
-      <Splitter style={{ height: '500px' }}>
-        <SplitterPanel className={cx(classes.panel, 'flex align-items-center justify-content-center')}>
+      <Splitter className={classes.splitter} layout={isVertical ? 'horizontal' : 'vertical'}>
+        <SplitterPanel className={classes.panel}>
           <RequestField />
+          <HidingPanel tabs={['Headers', 'Variables']}>
+            <VariablesField />
+            <HeadersField />
+          </HidingPanel>
         </SplitterPanel>
         <SplitterPanel className={cx(classes.panel, 'flex align-items-center justify-content-center')}>
           <ResponseField />

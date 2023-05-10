@@ -1,11 +1,22 @@
 import { FC } from 'react';
+import CodeMirror from '@uiw/react-codemirror';
+import customTheme from '@/styles/codeMirrorTheme';
+
 import { useAppSelector } from '@/hooks/redux';
-import { InputTextarea } from 'primereact/inputtextarea';
 
 const ResponseField: FC = () => {
   const { response } = useAppSelector((state) => state.graphiQl);
 
-  return <InputTextarea className="w-full h-full" value={response} rows={5} cols={30} />;
+  return (
+    <CodeMirror
+      className="w-full p-2 h-full border-round"
+      value={response}
+      height="100%"
+      theme={customTheme}
+      editable={false}
+      basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+    />
+  );
 };
 
 export default ResponseField;

@@ -4,7 +4,7 @@ export default EditorView.theme({
   '&': {
     backgroundColor: '#0e1315',
     borderRadius: '6px',
-    padding: '15px',
+    padding: '5px',
     color: '#fff',
   },
   '.cm-gutters': {
