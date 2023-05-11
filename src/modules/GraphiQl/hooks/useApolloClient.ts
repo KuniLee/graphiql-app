@@ -6,7 +6,7 @@ export default function (uri: string) {
     () =>
       new ApolloClient({
         uri,
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({ addTypename: false }),
       }),
     [uri]
   );

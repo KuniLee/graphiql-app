@@ -19,9 +19,9 @@ export default createAsyncThunk<string, ApolloClient<NormalizedCacheObject>, { r
     }
 
     try {
-      const result = await client.query({ query, variables: v });
+      const { data } = await client.query({ query, variables: v });
 
-      return JSON.stringify(result.data, null, ' ');
+      return JSON.stringify({ data }, null, ' ');
     } catch (error) {
       if (error instanceof ApolloError)
         if (error.networkError && 'result' in error.networkError)
