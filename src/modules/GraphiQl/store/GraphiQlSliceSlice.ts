@@ -2,6 +2,7 @@ import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit';
 import apolloQuery from './apolloQuery';
 import type { IntrospectionQuery } from 'graphql';
 import introspectionQuery from '@/modules/GraphiQl/store/introspectionQuery';
+import { OperationVariables } from '@apollo/client';
 
 interface GraphiQlState {
   serverUrl: string;
@@ -10,7 +11,7 @@ interface GraphiQlState {
   response: string;
   isLoading: boolean;
   introQuery: IntrospectionQuery | null;
-  variables: { [key: string]: string };
+  variables: OperationVariables;
 }
 
 const initialState: GraphiQlState = {
@@ -39,7 +40,7 @@ export const GraphiQlSlice = createSlice({
     setRequest(state, { payload }: PayloadAction<string>) {
       state.request = payload;
     },
-    setVars(state, { payload }: PayloadAction<{ [key: string]: string }>) {
+    setVars(state, { payload }: PayloadAction<OperationVariables>) {
       state.variables = payload;
     },
   },
