@@ -9,11 +9,13 @@ interface GraphiQlState {
   introError: boolean;
   response: string;
   isLoading: boolean;
+  headers: string;
   introQuery: IntrospectionQuery | null;
   variables: string;
 }
 
 const initialState: GraphiQlState = {
+  headers: '',
   introError: false,
   introQuery: null,
   serverUrl: 'https://graphqlzero.almansi.me/api',
@@ -41,6 +43,9 @@ export const GraphiQlSlice = createSlice({
     },
     setVars(state, { payload }: PayloadAction<string>) {
       state.variables = payload;
+    },
+    setHeaders(state, { payload }: PayloadAction<string>) {
+      state.headers = payload;
     },
   },
   extraReducers: (builder) => {
@@ -73,6 +78,6 @@ export const GraphiQlSlice = createSlice({
   },
 });
 
-export const { setUrl, setRequest, setVars } = GraphiQlSlice.actions;
+export const { setUrl, setRequest, setVars, setHeaders } = GraphiQlSlice.actions;
 
 export default GraphiQlSlice.reducer;
