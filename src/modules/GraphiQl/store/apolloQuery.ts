@@ -7,12 +7,12 @@ export default createAsyncThunk<string, ApolloClient<NormalizedCacheObject>, { r
   'graphiQl/query',
   async (client, { getState, rejectWithValue }) => {
     const {
-      graphiQl: { request },
+      graphiQl: { request, variables },
     } = getState() as RootState;
     const query = gql(request);
 
     try {
-      const result = await client.query({ query });
+      const result = await client.query({ query, variables });
 
       return JSON.stringify(result.data, null, ' ');
     } catch (error) {
