@@ -11,7 +11,7 @@ interface GraphiQlState {
   response: string;
   isLoading: boolean;
   introQuery: IntrospectionQuery | null;
-  variables: OperationVariables;
+  variables: string;
 }
 
 const initialState: GraphiQlState = {
@@ -27,7 +27,7 @@ const initialState: GraphiQlState = {
   }
 }`,
   response: '',
-  variables: {},
+  variables: '',
 };
 
 export const GraphiQlSlice = createSlice({
@@ -40,7 +40,7 @@ export const GraphiQlSlice = createSlice({
     setRequest(state, { payload }: PayloadAction<string>) {
       state.request = payload;
     },
-    setVars(state, { payload }: PayloadAction<OperationVariables>) {
+    setVars(state, { payload }: PayloadAction<string>) {
       state.variables = payload;
     },
   },
