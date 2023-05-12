@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { gql, ApolloError } from '@apollo/client';
+import { gql, ApolloError, OperationVariables } from '@apollo/client';
 import type { NormalizedCacheObject, ApolloClient } from '@apollo/client';
 import { RootState } from '@/store';
 
@@ -7,12 +7,19 @@ export default createAsyncThunk<string, ApolloClient<NormalizedCacheObject>, { r
   'graphiQl/query',
   async (client, { getState, rejectWithValue }) => {
     const {
-      graphiQl: { request },
+      graphiQl: { request, variables },
     } = getState() as RootState;
     const query = gql(request);
+    let v: OperationVariables;
 
     try {
-      const result = await client.query({ query });
+      v = JSON.parse(variables);
+    } catch {
+      v = {};
+    }
+
+    try {
+      const result = await client.query({ query, variables: v });
 
       return JSON.stringify(result.data, null, ' ');
     } catch (error) {
