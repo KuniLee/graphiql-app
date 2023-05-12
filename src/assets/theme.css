@@ -49,7 +49,7 @@
 }
 
 @font-face {
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   font-weight: 300;
   font-style: normal;
   src: local('Lato Light'), local('Lato-Light'),
@@ -57,7 +57,7 @@
 }
 
 @font-face {
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   font-weight: 400;
   font-style: normal;
   src: local('Lato Regular'), local('Lato-Regular'),
@@ -65,7 +65,7 @@
 }
 
 @font-face {
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   font-weight: 700;
   font-style: normal;
   src: local('Lato Bold'), local('Lato-Bold'),
