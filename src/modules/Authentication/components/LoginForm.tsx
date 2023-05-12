@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useEffect } from 'react';
+import React, { FC, RefObject, useEffect, useId } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { InputText } from 'primereact/inputtext';
@@ -19,6 +19,7 @@ type LoginData = {
 const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
   const navigate = useNavigate();
   const { t } = useTranslation(['auth', 'firebase']);
+  const id = useId();
 
   const [signIn, , , error] = useSignIn();
 
@@ -59,7 +60,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="email" className="block text-900 font-medium mb-2">
+      <label htmlFor={'email' + id} className="block text-900 font-medium mb-2">
         {t('loginForm.email.label')}
       </label>
       <InputText
@@ -68,7 +69,7 @@ const LoginForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
           required: true,
           pattern: EMAIL_PATTERN,
         })}
-        id="email"
+        id={'email' + id}
         type="text"
         placeholder={t('loginForm.email.placeholder').toString()}
         className={cx('w-full mb-3', { 'p-invalid': errors.email })}

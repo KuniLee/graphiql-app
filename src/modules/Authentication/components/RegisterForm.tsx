@@ -1,4 +1,4 @@
-import { FC, RefObject, useEffect, useRef } from 'react';
+import { FC, RefObject, useEffect, useRef, useId } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { InputText } from 'primereact/inputtext';
@@ -21,6 +21,7 @@ type RegisterData = {
 const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
   const navigate = useNavigate();
   const { t } = useTranslation(['auth', 'firebase']);
+  const id = useId();
 
   const [createUser, , , error] = useCreateUser();
 
@@ -86,7 +87,7 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="email" className="block text-900 font-medium mb-2">
+      <label htmlFor={'email' + id} className="block text-900 font-medium mb-2">
         {t('regForm.email.label')}
       </label>
       <InputText
@@ -94,7 +95,7 @@ const RegisterForm: FC<{ errToast: RefObject<Toast> }> = ({ errToast }) => {
           required: true,
           pattern: EMAIL_PATTERN,
         })}
-        id="email"
+        id={'email' + id}
         type="text"
         placeholder={t('regForm.email.placeholder').toString()}
         className={cx('w-full mb-3', { 'p-invalid': errors.email })}
