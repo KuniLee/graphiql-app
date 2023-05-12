@@ -2,7 +2,6 @@ import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit';
 import apolloQuery from './apolloQuery';
 import type { IntrospectionQuery } from 'graphql';
 import introspectionQuery from '@/modules/GraphiQl/store/introspectionQuery';
-import { OperationVariables } from '@apollo/client';
 
 interface GraphiQlState {
   serverUrl: string;
