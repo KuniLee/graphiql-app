@@ -16,7 +16,7 @@ const GraphQl: FC = () => {
   const isVertical = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-    <div className={cx(classes.wrapper, 'container my-2')}>
+    <div className={cx(classes.wrapper, 'container my-4')}>
       <div className="flex p-2 gap-2">
         <DocsBtn />
         <URLInput />

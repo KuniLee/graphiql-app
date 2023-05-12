@@ -6,14 +6,16 @@ import { ERoutes } from '@/router';
 import { useAuthState } from '@/modules/Authentication';
 import { useSignOut } from '@/modules/Authentication';
 import { useNavigate } from 'react-router-dom';
-
+import useIsScrolled from '@/hooks/useIsScrolled';
 import Logo from './Logo/Logo';
 import styles from './Header.module.scss';
+import cx from 'classnames';
 
 const Header: FC = () => {
   const { t, i18n } = useTranslation(['header']);
   const navigate = useNavigate();
   const [signOut] = useSignOut();
+  const isScrolled = useIsScrolled();
 
   const [user] = useAuthState();
 
@@ -29,18 +31,20 @@ const Header: FC = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <Logo />
-      <div className="container flex gap-2 justify-content-end align-items-center">
-        <SelectButton
-          options={[
-            { label: 'EN', value: 'en' },
-            { label: 'RU', value: 'ru' },
-          ]}
-          value={i18n.language}
-          onChange={changeLang}
-        />
-        <Button label={t(user ? 'LogOut' : 'SignIn/Up').toString()} onClick={buttonClickHandle} />
+    <header className={cx(styles.header, { [styles.sticky]: isScrolled })}>
+      <div className="container flex justify-content-between">
+        <Logo />
+        <div className="flex gap-2 justify-content-end align-items-center">
+          <SelectButton
+            options={[
+              { label: 'EN', value: 'en' },
+              { label: 'RU', value: 'ru' },
+            ]}
+            value={i18n.language}
+            onChange={changeLang}
+          />
+          <Button label={t(user ? 'LogOut' : 'SignIn/Up').toString()} onClick={buttonClickHandle} />
+        </div>
       </div>
     </header>
   );
