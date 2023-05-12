@@ -15,20 +15,23 @@ interface GraphiQlState {
 }
 
 const initialState: GraphiQlState = {
-  headers: '',
+  headers: `{
+  "Authorization": "test"
+}`,
   introError: false,
   introQuery: null,
   serverUrl: 'https://graphqlzero.almansi.me/api',
   isLoading: false,
-  request: `query{
-  users{
-    data{
-      name
-    }
+  request: `query($varId: ID!){
+  user(id: $varId){
+    id
+    name
   }
 }`,
   response: '',
-  variables: '',
+  variables: `{
+  "varId":1
+}`,
 };
 
 export const GraphiQlSlice = createSlice({

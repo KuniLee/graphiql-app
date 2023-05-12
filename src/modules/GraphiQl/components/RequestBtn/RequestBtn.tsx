@@ -6,10 +6,10 @@ import apolloQuery from '@/modules/GraphiQl/store/apolloQuery';
 import cx from 'classnames';
 
 const RequestBtn: FC = () => {
-  const { serverUrl, isLoading } = useAppSelector((state) => state.graphiQl);
+  const { serverUrl, isLoading, headers } = useAppSelector((state) => state.graphiQl);
   const dispatch = useAppDispatch();
 
-  const client = useApolloClient(serverUrl);
+  const client = useApolloClient(serverUrl, headers);
 
   return (
     <Button
