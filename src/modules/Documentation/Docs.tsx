@@ -89,7 +89,7 @@ const Docs: FC = () => {
 
   return (
     <div>
-      <SlideMenu model={docs()} viewportHeight={500} menuWidth={250} style={{ width: '90%' }}></SlideMenu>
+      <SlideMenu model={docs()} viewportHeight={500} menuWidth={280} style={{ width: '300px' }}></SlideMenu>
     </div>
   );
 };
