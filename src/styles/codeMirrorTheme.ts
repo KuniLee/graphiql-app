@@ -13,7 +13,10 @@ export default EditorView.theme({
     color: '#fff',
   },
   '.cm-activeLine, .cm-activeLineGutter': {
-    backgroundColor: 'var(--gray-700)',
+    backgroundColor: 'unset',
+  },
+  '.cm-cursor': {
+    borderLeft: '1.2px solid #fff',
   },
   '.ͼb': {
     color: '#D60590',
