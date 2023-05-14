@@ -11,12 +11,14 @@ import HidingPanel from '@components/HidingPanel';
 import VariablesField from '@/modules/GraphiQl/components/VariablesField';
 import HeadersField from '@/modules/GraphiQl/components/HeadersField';
 import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 
 const GraphQl: FC = () => {
   const isVertical = useMediaQuery({ query: '(min-width: 768px)' });
+  const { t } = useTranslation(['graphiQl']);
 
   return (
-    <div className={cx(classes.wrapper, 'container my-2')}>
+    <div className={cx(classes.wrapper, 'container my-4')}>
       <div className="flex p-2 gap-2">
         <DocsBtn />
         <URLInput />
@@ -25,7 +27,7 @@ const GraphQl: FC = () => {
       <Splitter className={classes.splitter} layout={isVertical ? 'horizontal' : 'vertical'}>
         <SplitterPanel className={classes.panel}>
           <RequestField />
-          <HidingPanel tabs={['Headers', 'Variables']}>
+          <HidingPanel tabs={[t('HidingPanel.tabs.Headers'), t('HidingPanel.tabs.Variables')]}>
             <VariablesField />
             <HeadersField />
           </HidingPanel>
