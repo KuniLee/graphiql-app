@@ -1,0 +1,25 @@
+.header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  padding: 0.75rem 0;
+  color: white;
+  background: var(--highlight-bg);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 5px 5px -5px #f6e7ea;
+  transition: padding 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition-delay: 100ms;
+}
+
+.sticky {
+  padding: 0.25rem 0;
+  box-shadow: none;
+}
+
+@media screen and (width <= 480px) {
+  .header {
+    &__content {
+      gap: 14px;
+    }
+  }
+}

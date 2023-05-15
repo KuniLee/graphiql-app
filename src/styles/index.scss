@@ -1,0 +1,24 @@
+@import 'normalize.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex';
+@import '@/assets/theme.css';
+@import 'animations';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: var(--font-family);
+}
+
+html {
+  @media screen and (width < 768px) {
+    font-size: 14px;
+  }
+}
+
+a:visited {
+  color: inherit;
+}
