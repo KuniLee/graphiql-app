@@ -67,6 +67,7 @@ export const GraphiQlSlice = createSlice({
       .addCase(introspectionQuery.fulfilled, (state, action) => {
         state.introError = false;
         state.isLoading = false;
+        state.response = '';
         state.introQuery = action.payload as Draft<typeof action.payload>;
       })
       .addCase(introspectionQuery.pending, (state) => {
